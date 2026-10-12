@@ -285,6 +285,85 @@ body[data-view=curso] #curso{display:block}
 @keyframes nowglow{0%,100%{box-shadow:0 0 12px rgba(46,230,176,.6),0 0 26px rgba(46,230,176,.35)}50%{box-shadow:0 0 22px rgba(125,255,214,.95),0 0 52px rgba(46,230,176,.65)}}
 @keyframes nowshine{0%{background-position:150% 0}100%{background-position:-150% 0}}
 @media(prefers-reduced-motion:reduce){.yr.now,.yr.now::after{animation:none}}
+
+/* catálogo estilo streaming · acceso anticipado (beta) */
+body[data-view=catalogo] #catalogo{display:block}
+#catalogo .wrap{width:min(1280px,100% - 32px)}
+.nf-head{margin:4px 0 22px;display:grid;gap:12px;justify-items:start}
+.nf-head h2{margin-top:6px}
+.nf-hero{position:relative;isolation:isolate;overflow:hidden;border-radius:var(--r);border:1px solid var(--line);min-height:clamp(340px,50vw,470px);display:flex;align-items:flex-end;background:#05231a;box-shadow:0 0 44px rgba(46,230,176,.14)}
+.nf-hero-art{position:absolute;inset:0;z-index:-2;background:radial-gradient(720px circle at 78% 35%,rgba(46,230,176,.34),transparent 62%),radial-gradient(520px circle at 95% 95%,rgba(122,92,255,.28),transparent 60%),linear-gradient(160deg,#05231a,#02100b)}
+.nf-fan{position:absolute;right:4%;top:50%;transform:translateY(-50%);width:min(50%,560px);height:86%}
+.nf-fc{position:absolute;width:37%;aspect-ratio:3/4;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.28);box-shadow:0 22px 50px rgba(0,0,0,.6)}
+.nf-fc svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.nf-fc.a{left:0;top:18%;transform:rotate(-9deg)}
+.nf-fc.b{left:29%;top:2%;width:42%;z-index:2}
+.nf-fc.c{right:0;top:20%;transform:rotate(9deg)}
+.nf-hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(2,16,11,.95) 0%,rgba(2,16,11,.74) 46%,rgba(2,16,11,.08) 100%),linear-gradient(0deg,rgba(2,16,11,.8),transparent 55%)}
+.nf-hero-in{padding:clamp(22px,4vw,48px);max-width:640px;display:grid;gap:14px;justify-items:start}
+.nf-hero h3{font-size:clamp(2rem,6vw,3.5rem);color:#fff;text-shadow:0 4px 24px rgba(0,0,0,.55)}
+.nf-hero p{margin:0;color:#d9fff0;max-width:52ch}
+.nf-meta{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+.nf-meta li{font:700 .78rem Montserrat,sans-serif;padding:6px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.28);background:rgba(2,16,11,.6);color:#fff}
+.nf-meta li.nf-seal{border-color:var(--mint);color:var(--lime)}
+.nf-acts{display:flex;flex-wrap:wrap;gap:12px;margin-top:4px}
+.nf-acts .btn svg,.nf-box .btn svg{width:18px;height:18px}
+.nf-bar{position:sticky;top:66px;z-index:6;margin:24px -6px 0;padding:12px 6px 10px;background:linear-gradient(180deg,rgba(2,16,11,.95),rgba(2,16,11,.84));backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nf-lbl{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font:700 .78rem Montserrat,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);margin-bottom:8px}
+.nf-lbl span:last-child{text-transform:none;letter-spacing:0;font-weight:600}
+.nf-chips{display:flex;gap:10px;overflow-x:auto;scrollbar-width:none;padding:3px 2px 6px}
+.nf-chips::-webkit-scrollbar{display:none}
+.nf-chip{flex:none;font:700 .86rem Montserrat,sans-serif;padding:10px 18px;border-radius:999px;border:1px solid var(--line);background:rgba(5,35,26,.85);color:var(--mute);cursor:pointer;transition:.2s}
+.nf-chip:hover{color:var(--ink);border-color:var(--mint)}
+.nf-chip[aria-pressed=true]{background:linear-gradient(120deg,var(--mint),#7dffd6);color:#02100b;border-color:var(--mint);box-shadow:0 0 20px rgba(46,230,176,.45)}
+.nf-row{position:relative;margin-top:26px}
+.nf-row h4{font:700 1.15rem Montserrat,sans-serif;margin:0 0 8px 2px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.nf-row h4 small{font:600 .8rem Montserrat,sans-serif;color:var(--mute)}
+.nf-track{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x proximity;scroll-behavior:smooth;scrollbar-width:none;padding:10px 6px 20px;margin:0 -6px}
+.nf-track::-webkit-scrollbar{display:none}
+.nf-arrow{position:absolute;top:calc(50% + 8px);transform:translateY(-50%);z-index:4;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;padding:0;cursor:pointer;color:var(--mint);background:rgba(2,16,11,.86);border:1px solid var(--mint);box-shadow:0 0 18px rgba(46,230,176,.4);opacity:0;transition:.25s}
+.nf-arrow svg{width:18px;height:18px}
+.nf-arrow.l{left:-8px}.nf-arrow.r{right:-8px}
+.nf-row:hover .nf-arrow,.nf-arrow:focus-visible{opacity:1}
+@media(hover:none){.nf-arrow{display:none}}
+.nf-card{position:relative;flex:none;width:clamp(148px,19vw,208px);aspect-ratio:3/4;border-radius:18px;overflow:hidden;border:1px solid var(--line);padding:0;cursor:pointer;color:#fff;text-align:left;background:#05231a;scroll-snap-align:start;font:inherit;transition:transform .3s cubic-bezier(.2,.7,.2,1),box-shadow .3s,border-color .3s}
+.nf-card:hover,.nf-card:focus-visible{transform:translateY(-6px) scale(1.04);border-color:var(--mint);box-shadow:0 18px 40px rgba(0,0,0,.55),0 0 28px rgba(46,230,176,.35);z-index:2}
+.nf-card svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.nf-card .ov{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:12px;background:linear-gradient(180deg,rgba(0,0,0,.3),transparent 34%,rgba(2,16,11,.55) 62%,rgba(2,16,11,.95))}
+.nf-tag{align-self:flex-start;font:700 .64rem/1 Montserrat,sans-serif;letter-spacing:.06em;text-transform:uppercase;padding:6px 9px;border-radius:999px;background:rgba(2,16,11,.78);border:1px solid rgba(255,255,255,.28);color:#fff}
+.nf-tag.now{background:var(--mint);color:#02100b;border-color:var(--mint)}
+.nf-ct{display:block;font:400 clamp(1rem,2.2vw,1.2rem)/1.08 'Archivo Black',sans-serif;text-shadow:0 2px 10px rgba(0,0,0,.7)}
+.nf-cm{display:block;margin-top:6px;font:600 .72rem Montserrat,sans-serif;color:#d9fff0}
+.nf-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:18px;margin-top:20px}
+.nf-grid .nf-card{width:100%}
+.nf-ghead{margin:24px 2px 0;font:700 1.15rem Montserrat,sans-serif}
+.nf-ghead small{margin-left:10px;font:600 .8rem Montserrat,sans-serif;color:var(--mute)}
+.nf-modal{position:fixed;inset:0;z-index:80;display:grid;place-items:center;padding:16px;background:rgba(1,8,5,.8);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.nf-modal[hidden]{display:none}
+.nf-box{position:relative;width:min(860px,100%);max-height:calc(100svh - 32px);overflow:auto;border-radius:var(--r);border:1px solid var(--mint);background:linear-gradient(160deg,#05231a,#02100b);box-shadow:0 0 60px rgba(46,230,176,.25);display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.4fr)}
+.nf-mart{position:relative;min-height:100%;overflow:hidden;border-radius:var(--r) 0 0 var(--r)}
+.nf-mart svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.nf-mbody{padding:clamp(20px,3.4vw,34px);display:grid;gap:14px;align-content:start}
+.nf-mbody h3{font-size:clamp(1.5rem,4vw,2.2rem);padding-right:40px}
+.nf-mcat{font:700 .78rem Montserrat,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--mint)}
+.nf-mbody p{margin:0;color:var(--mute)}
+.nf-mbody h5{margin:4px 0 0;font:700 .92rem Montserrat,sans-serif}
+.nf-learn{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.nf-learn li{display:flex;gap:10px;align-items:flex-start;color:var(--ink);font-size:.93rem}
+.nf-learn li::before{content:"";flex:none;width:8px;height:8px;margin-top:.55em;border-radius:50%;background:var(--mint);box-shadow:0 0 10px var(--mint)}
+.nf-x{position:absolute;top:12px;right:12px;z-index:3;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;padding:0;cursor:pointer;color:var(--ink);background:rgba(2,16,11,.85);border:1px solid var(--line);transition:.2s}
+.nf-x:hover{border-color:var(--mint);color:var(--mint)}
+.nf-x svg{width:16px;height:16px}
+.nf-off{cursor:default;opacity:.6;animation:none!important;box-shadow:none!important}.nf-off::after{display:none}
+.nf-off:hover{transform:none}
+@media(max-width:700px){
+ .nf-fan{opacity:.4;right:-12%;width:92%}
+ .nf-hero::before{background:linear-gradient(0deg,rgba(2,16,11,.96) 24%,rgba(2,16,11,.5) 100%)}
+ .nf-bar{top:62px}
+ .nf-box{grid-template-columns:1fr}
+ .nf-mart{min-height:170px;border-radius:var(--r) var(--r) 0 0}
+}
+@media(prefers-reduced-motion:reduce){.nf-card,.nf-chip,.nf-arrow{transition:none}.nf-track{scroll-behavior:auto}.nf-card:hover,.nf-card:focus-visible{transform:none}}
 </style>
 </head>
 <body data-view="home">
@@ -412,13 +491,35 @@ body[data-view=curso] #curso{display:block}
    <article class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div><h3>Experiencia real</h3><p>Lo que he aplicado trabajando en empresas de Venezuela y Estados Unidos.</p></article>
    <article class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"/></svg></div><h3>Hecho con cariño</h3><p>Pensado para que aprendas de forma clara y sin complicaciones.</p></article>
   </div>
-  <div class="cta"><a class="btn fill" href="#curso"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg>Ver video prueba</a><a class="btn fill" href="https://wa.me/584128436168?text=Hola%20Wilklenman%2C%20quiero%20que%20me%20avises%20cuando%20la%20plataforma%20educativa%20est%C3%A9%20lista." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg>Avísame cuando esté lista</a></div>
+  <div class="cta"><a class="btn fill" href="#catalogo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M10 8.5v7l6-3.5z" fill="currentColor"/></svg>Acceso anticipado a la web</a><a class="btn fill" href="https://wa.me/584128436168?text=Hola%20Wilklenman%2C%20quiero%20que%20me%20avises%20cuando%20la%20plataforma%20educativa%20est%C3%A9%20lista." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg>Avísame cuando esté lista</a></div>
   <div class="pl-sig">— Will</div>
  </div>
 </div></section>
 
+<section id="catalogo" class="view"><div class="wrap">
+ <button class="back" type="button" id="backcat">← Volver a la plataforma</button>
+ <div class="nf-head">
+  <span class="pl-badge"><i></i>Versión beta · cursos y portadas de ejemplo</span>
+  <h2>Acceso anticipado a la web</h2>
+  <p class="lead">Un adelanto de la plataforma educativa: explora los cursos, filtra por tipo de aprendizaje y certifícate <b style="color:var(--mint)">gratis</b>.</p>
+ </div>
+ <div class="nf-hero" id="nfHero"></div>
+ <div class="nf-bar">
+  <div class="nf-lbl"><span>Tipo de aprendizaje</span><span id="nfCount"></span></div>
+  <div class="nf-chips" id="nfChips" role="group" aria-label="Filtrar cursos por tipo de aprendizaje"></div>
+ </div>
+ <div id="nfRows" aria-live="polite"></div>
+</div></section>
+<div class="nf-modal" id="nfM" role="dialog" aria-modal="true" aria-labelledby="nfMT" hidden>
+ <div class="nf-box">
+  <button class="nf-x" id="nfX" type="button" aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
+  <div class="nf-mart" id="nfMA"></div>
+  <div class="nf-mbody" id="nfMB"></div>
+ </div>
+</div>
+
 <section id="curso" class="view"><div class="wrap">
- <button class="back" type="button" id="backpl">← Volver a la plataforma</button>
+ <button class="back" type="button" id="backpl">← Volver al catálogo</button>
  <div class="cv-head"><span class="pl-badge"><i></i>Video de prueba</span>
   <h2>Curso de prueba</h2>
   <p class="lead">Elige un módulo y mira la clase. El video se controla solo con los botones de abajo.</p></div>
@@ -546,7 +647,75 @@ function ytLoad(){if(window.playerjs)return ytMake();if(YTL)return;YTL=true;cons
 $('#cvPlay').onclick=()=>{if(YTR)YTP.playVideo()};$('#cvPause').onclick=()=>{if(YTR)YTP.pauseVideo()};
 $('#cvShield').addEventListener('contextmenu',e=>e.preventDefault());
 $$('.cm').forEach(b=>b.onclick=()=>{$$('.cm').forEach(x=>{x.classList.toggle('on',x===b);x.toggleAttribute('aria-current',x===b)});$('#cvTitle').textContent=b.dataset.t;if(YTR){YTP.seekTo(0,true);YTP.pauseVideo()}});
-$('#backpl').onclick=()=>location.hash='plataforma';setInterval(ytTick,500);
+$('#backpl').onclick=()=>location.hash='catalogo';setInterval(ytTick,500);
+/* catálogo estilo streaming · acceso anticipado (beta) */
+const NFC=['Primeros pasos','Inteligencia artificial','Marketing y publicidad','Redes y contenido','Diseño','Datos y Excel'];
+const NFK={'Primeros pasos':['#2ee6b0','#047c62'],'Inteligencia artificial':['#7a5cff','#0fb98f'],'Marketing y publicidad':['#ff8a3d','#b4234b'],'Redes y contenido':['#e1306c','#f9a03f'],'Diseño':['#26c6ff','#2b5bff'],'Datos y Excel':['#b6ffe3','#047c62']};
+const NFD=[
+{id:'prueba',t:'Curso de prueba',cat:'Primeros pasos',lvl:'Básico',dur:'Clase demo',mods:3,mo:5,now:1,d:'Una clase de muestra para que veas cómo funciona la plataforma: eliges un módulo, miras la clase y avanzas a tu ritmo.',l:['Cómo se navega la plataforma','Cómo se ve una clase dividida en módulos','Cómo será el camino hasta tu certificado']},
+{id:'ruta',t:'Tu ruta hacia el certificado gratis',cat:'Primeros pasos',lvl:'Básico',dur:'1 h 10 min',mods:2,mo:1,d:'Cómo aprender aquí paso a paso: avanzar por módulos, completar las evaluaciones y obtener tu certificado sin costo.',l:['Cómo avanzar por módulos y niveles','Cómo funcionan las evaluaciones','Cómo descargar y compartir tu certificado']},
+{id:'ia-creadores',t:'IA para creadores de contenido',cat:'Inteligencia artificial',lvl:'Intermedio',dur:'4 h 30 min',mods:6,mo:0,d:'Usa inteligencia artificial para generar ideas, textos e imágenes de contenido sin perder tu estilo personal.',l:['Flujos de trabajo con IA para crear más rápido','Cómo mantener tu voz y tu marca','Revisar y mejorar lo que genera la IA']},
+{id:'prompts',t:'Prompts que sí funcionan',cat:'Inteligencia artificial',lvl:'Básico',dur:'2 h 15 min',mods:4,mo:2,d:'Aprende a pedirle a la IA lo que realmente necesitas, con instrucciones claras y resultados que puedes usar.',l:['Estructura de un buen prompt','Ejemplos para marketing y redes','Cómo corregir respuestas flojas']},
+{id:'video-ia',t:'Videos con IA: de la idea al clip',cat:'Inteligencia artificial',lvl:'Intermedio',dur:'3 h 40 min',mods:5,mo:3,d:'Crea clips cortos con herramientas de video con IA: del guion a la pieza lista para publicar.',l:['Cómo escribir un guion visual','Generar y ordenar tus escenas','Preparar el clip para cada red']},
+{id:'publicidad-cero',t:'Publicidad desde cero',cat:'Marketing y publicidad',lvl:'Básico',dur:'5 h',mods:7,mo:4,d:'Los fundamentos de la publicidad explicados sin complicaciones: mensaje, público y cómo medir lo que haces.',l:['Cómo definir tu público','Cómo construir un mensaje que conecte','Medir resultados con métricas simples']},
+{id:'estudios',t:'Estudios de mercado prácticos',cat:'Marketing y publicidad',lvl:'Intermedio',dur:'3 h 50 min',mods:5,mo:1,d:'Aprende a investigar a tu mercado con herramientas accesibles y a convertir los datos en decisiones.',l:['Cómo plantear las preguntas correctas','Recolectar y ordenar la información','Presentar conclusiones que se entiendan']},
+{id:'marca-7',t:'Tu marca en 7 días',cat:'Marketing y publicidad',lvl:'Básico',dur:'2 h 40 min',mods:4,mo:0,d:'Un reto guiado para definir qué eres, a quién le hablas y cómo quieres que te recuerden.',l:['Propósito y propuesta de valor','Tono de voz y personalidad de marca','Un plan simple para lanzarla']},
+{id:'cm-pro',t:'Community manager profesional',cat:'Redes y contenido',lvl:'Básico',dur:'6 h',mods:8,mo:2,d:'Todo lo que necesitas para gestionar redes sociales de una marca: estrategia, publicación y atención a la comunidad.',l:['Estrategia de contenidos por red social','Cómo atender y hacer crecer una comunidad','Reportes claros para tus clientes']},
+{id:'calendario',t:'Calendario de contenido que funciona',cat:'Redes y contenido',lvl:'Intermedio',dur:'2 h 30 min',mods:4,mo:4,d:'Organiza tus publicaciones del mes con una plantilla simple y una lógica que sí puedes sostener.',l:['Pilares de contenido','Cómo planificar un mes completo','Ajustar según lo que funciona']},
+{id:'reels',t:'Reels y TikTok con intención',cat:'Redes y contenido',lvl:'Intermedio',dur:'3 h',mods:5,mo:5,d:'Videos cortos con un objetivo claro: captar atención en los primeros segundos y llevar a la acción.',l:['Ganchos y estructura del video corto','Edición ágil desde el celular','Cómo leer las estadísticas de tus videos']},
+{id:'canva',t:'Diseño para redes con Canva',cat:'Diseño',lvl:'Básico',dur:'4 h',mods:6,mo:3,d:'Diseña publicaciones, historias y portadas con buen orden visual usando solo Canva.',l:['Composición, color y tipografía','Plantillas propias y reutilizables','Exportar para cada formato']},
+{id:'identidad',t:'Identidad visual para emprendedores',cat:'Diseño',lvl:'Intermedio',dur:'3 h 20 min',mods:5,mo:1,d:'Crea una imagen coherente para tu negocio: logo, paleta, tipografías y reglas básicas de uso.',l:['Elegir paleta y tipografías','Aplicar tu identidad en todas tus piezas','Armar una mini guía de marca']},
+{id:'excel',t:'Excel para mercadeo',cat:'Datos y Excel',lvl:'Básico',dur:'4 h 45 min',mods:6,mo:2,d:'Las fórmulas, tablas y gráficos que más se usan en mercadeo, explicados con ejemplos reales.',l:['Ordenar y limpiar datos','Fórmulas y tablas dinámicas esenciales','Gráficos que comunican']},
+{id:'dash',t:'Dashboards que se entienden',cat:'Datos y Excel',lvl:'Intermedio',dur:'3 h 30 min',mods:5,mo:0,d:'Convierte tus números en un tablero claro que cualquiera pueda leer y usar para decidir.',l:['Qué indicadores mostrar','Diseño de un dashboard legible','Contar la historia detrás de los datos']}
+];
+const NFTOP=['prueba','ia-creadores','publicidad-cero','cm-pro','canva','excel'];
+let NFU=0,NFF='Todos',NFLAST=null;
+const nfById=id=>NFD.find(x=>x.id===id);
+function nfCover(c){const u='nf'+(++NFU),k=NFK[c.cat],w='rgba(255,255,255,',m=c.mo%6;let s='';
+ if(m===0)for(let i=1;i<=5;i++)s+='<circle cx="240" cy="120" r="'+i*30+'" fill="none" stroke="'+w+(.34-i*.04)+')" stroke-width="2.5"/>';
+ else if(m===1)for(let i=0;i<9;i++)s+='<path d="M'+(-120+i*58)+' 420L'+(80+i*58)+' -20" stroke="'+w+'.13)" stroke-width="16"/>';
+ else if(m===2)for(let y=0;y<7;y++)for(let x=0;x<8;x++)s+='<circle cx="'+(24+x*34)+'" cy="'+(26+y*30)+'" r="'+(2+((x+y)%3))+'" fill="'+w+'.34)"/>';
+ else if(m===3)for(let i=0;i<5;i++){const y=110+i*30;s+='<path d="M0 '+y+'Q75 '+(y-34)+' 150 '+y+'T300 '+y+'" fill="none" stroke="'+w+'.3)" stroke-width="3"/>'}
+ else if(m===4)s='<path d="M0 300L90 160L170 280L230 190L300 300V400H0Z" fill="'+w+'.15)"/><path d="M0 340L70 250L150 330L220 240L300 330V400H0Z" fill="'+w+'.12)"/>';
+ else s='<circle cx="205" cy="125" r="72" fill="'+w+'.16)"/><path d="M80 70C84 96 92 104 118 108C92 112 84 120 80 146C76 120 68 112 42 108C68 104 76 96 80 70Z" fill="'+w+'.5)"/>';
+ return '<svg viewBox="0 0 300 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><defs><linearGradient id="'+u+'g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="'+k[0]+'"/><stop offset="1" stop-color="'+k[1]+'"/></linearGradient><radialGradient id="'+u+'r" cx=".25" cy=".15" r=".9"><stop offset="0" stop-color="#fff" stop-opacity=".28"/><stop offset="1" stop-color="#000" stop-opacity=".2"/></radialGradient></defs><rect width="300" height="400" fill="url(#'+u+'g)"/><rect width="300" height="400" fill="url(#'+u+'r)"/>'+s+'</svg>'}
+const nfCard=c=>'<button class="nf-card" type="button" data-id="'+c.id+'" aria-label="'+c.t+'. '+c.cat+'. '+(c.now?'Disponible ahora':'Próximamente')+'">'+nfCover(c)+'<span class="ov"><span class="nf-tag'+(c.now?' now':'')+'">'+(c.now?'Disponible':'Próximamente')+'</span><span><span class="nf-ct">'+c.t+'</span><span class="nf-cm">'+c.lvl+' · '+c.dur+'</span></span></span></button>';
+const NFAR='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">';
+const nfRow=(t,l)=>'<div class="nf-row" role="group" aria-label="'+t+'"><h4>'+t+'<small>'+l.length+(l.length===1?' curso':' cursos')+'</small></h4><button class="nf-arrow l" type="button" data-dir="-1" aria-label="Ver anteriores">'+NFAR+'<path d="M15 5l-7 7 7 7"/></svg></button><div class="nf-track">'+l.map(nfCard).join('')+'</div><button class="nf-arrow r" type="button" data-dir="1" aria-label="Ver siguientes">'+NFAR+'<path d="M9 5l7 7-7 7"/></svg></button></div>';
+function nfRender(){
+ $$('.nf-chip').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.f===NFF)));
+ let h='',n;
+ if(NFF==='Todos'){n=NFD.length;h=nfRow('Los más esperados',NFTOP.map(nfById));NFC.forEach(k=>{h+=nfRow(k,NFD.filter(x=>x.cat===k))})}
+ else{const l=NFD.filter(x=>x.cat===NFF);n=l.length;h='<div class="nf-ghead">'+NFF+'<small>'+n+(n===1?' curso':' cursos')+'</small></div><div class="nf-grid">'+l.map(nfCard).join('')+'</div>'}
+ $('#nfRows').innerHTML=h;$('#nfCount').textContent='Mostrando '+n+(n===1?' curso':' cursos')}
+function nfOpen(id,from){const c=nfById(id);if(!c)return;NFLAST=from||document.activeElement;
+ $('#nfMA').innerHTML=nfCover(c);
+ const wa='https://wa.me/584128436168?text='+encodeURIComponent('Hola Wilklenman, quiero que me avises cuando el curso "'+c.t+'" esté disponible.');
+ const play='<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg>';
+ $('#nfMB').innerHTML='<span class="nf-mcat">'+c.cat+'</span><h3 id="nfMT">'+c.t+'</h3>'
+  +'<ul class="nf-meta"><li>'+c.lvl+'</li><li>'+c.dur+'</li><li>'+c.mods+' módulos</li><li class="nf-seal">Certificado gratis</li></ul>'
+  +'<p>'+c.d+'</p><h5>Lo que vas a aprender</h5><ul class="nf-learn">'+c.l.map(x=>'<li>'+x+'</li>').join('')+'</ul>'
+  +'<div class="nf-acts">'+(c.now?'<a class="btn fill" href="#curso">'+play+'Ver clase de prueba</a>':'<span class="btn nf-off" aria-disabled="true">Próximamente</span><a class="btn" href="'+wa+'" target="_blank" rel="noopener">Avísame cuando esté</a>')+'</div>';
+ $('#nfM').hidden=false;document.documentElement.style.overflow='hidden';$('#nfM .nf-box').scrollTop=0;$('#nfX').focus()}
+function nfClose(){if($('#nfM').hidden)return;$('#nfM').hidden=true;document.documentElement.style.overflow='';if(NFLAST&&document.contains(NFLAST))try{NFLAST.focus()}catch(e){}NFLAST=null}
+(function(){
+ const D=NFD[0];D.mods=$$('.cm').length||D.mods;
+ $('#nfChips').innerHTML=['Todos',...NFC].map(f=>'<button class="nf-chip" type="button" data-f="'+f+'" aria-pressed="false">'+f+'</button>').join('');
+ const k=NFK[D.cat];
+ $('#nfHero').innerHTML='<div class="nf-hero-art"><div class="nf-fan"><div class="nf-fc a">'+nfCover(nfById('ia-creadores'))+'</div><div class="nf-fc b">'+nfCover(D)+'</div><div class="nf-fc c">'+nfCover(nfById('canva'))+'</div></div></div><div class="nf-hero-in"><span class="nf-tag now">Disponible ahora</span><h3>'+D.t+'</h3><p>'+D.d+'</p><ul class="nf-meta"><li>'+D.mods+' módulos</li><li>'+D.lvl+'</li><li class="nf-seal">Certificado gratis</li></ul><div class="nf-acts"><a class="btn fill" href="#curso"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg>Ver clase de prueba</a><button class="btn" id="nfInfo" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>Más información</button></div></div>';
+ $('#nfInfo').onclick=e=>nfOpen('prueba',e.currentTarget);
+ $('#nfChips').addEventListener('click',e=>{const b=e.target.closest('.nf-chip');if(!b)return;NFF=b.dataset.f;nfRender()});
+ $('#nfRows').addEventListener('click',e=>{const a=e.target.closest('.nf-arrow');if(a){const t=a.parentElement.querySelector('.nf-track');t.scrollBy({left:a.dataset.dir*t.clientWidth*.8,behavior:RM?'auto':'smooth'});return}
+  const c=e.target.closest('.nf-card');if(c)nfOpen(c.dataset.id,c)});
+ $('#nfX').onclick=nfClose;
+ $('#nfM').addEventListener('click',e=>{if(e.target===e.currentTarget)nfClose()});
+ addEventListener('keydown',e=>{if($('#nfM').hidden)return;if(e.key==='Escape'){nfClose();return}
+  if(e.key==='Tab'){const f=[...$('#nfM').querySelectorAll('a[href],button:not([disabled])')];if(!f.length)return;const a=f[0],z=f[f.length-1];
+   if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus()}else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus()}}});
+ addEventListener('hashchange',nfClose);
+ $('#backcat').onclick=()=>location.hash='plataforma';
+ nfRender();
+})();
 /* vistas por hash */
 let VW='home';
 function setView(v,anchor){const prev=VW;VW=v;if(v==='curso')ytLoad();else if(YTR)try{YTP.pauseVideo()}catch(e){}if(prev!==v)SND.play('whoosh');document.body.dataset.view=v;tg(false);
@@ -554,7 +723,7 @@ function setView(v,anchor){const prev=VW;VW=v;if(v==='curso')ytLoad();else if(YT
  else if(prev!=='home'){const el=anchor&&document.getElementById(anchor);scrollTo({top:el?el.getBoundingClientRect().top+scrollY-(innerWidth>860?84:70):0,behavior:'instant'})}}
 function route(){const h=decodeURIComponent(location.hash.slice(1));
  if(h==='educacion')setView('edu');
- else if(h==='plataforma')setView('plataforma');else if(h==='curso')setView('curso');
+ else if(h==='plataforma')setView('plataforma');else if(h==='catalogo')setView('catalogo');else if(h==='curso')setView('curso');
  else if(h.startsWith('empresa/')&&h.slice(8) in JOBS){job(h.slice(8));setView('job')}
  else setView('home',h)}
 addEventListener('hashchange',route);
